@@ -1,0 +1,384 @@
+:root {
+  --bg: #eef1f6;
+  --surface: #fff;
+  --ink: #14213d;
+  --muted: #55607a;
+  --line: #d5dbe8;
+  --accent: #2f5bff;
+  --accent-ink: #fff;
+  --mark: #ffc857;
+
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1424;
+    --surface: #161e33;
+    --ink: #e8ecf7;
+    --muted: #9aa5c3;
+    --line: #2a3452;
+    --accent: #7b97ff;
+    --accent-ink: #0e1424;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0e1424;
+  --surface: #161e33;
+  --ink: #e8ecf7;
+  --muted: #9aa5c3;
+  --line: #2a3452;
+  --accent: #7b97ff;
+  --accent-ink: #0e1424;
+}
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 "Instrument Sans", system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: "Bricolage Grotesque", "Instrument Sans", system-ui, sans-serif;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 1.25rem;
+  padding: 1.25rem 0;
+  font-weight: 500;
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--ink);
+}
+
+section {
+  padding: 3.5rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.hero {
+  padding: 2.5rem 0 4rem;
+}
+
+.hero h1 {
+  font-size: clamp(3.2rem, 12vw, 8.5rem);
+  font-weight: 800;
+  line-height: 0.92;
+}
+
+.hero h1 span {
+  display: block;
+  width: fit-content;
+  background: linear-gradient(
+    transparent 62%,
+    var(--mark) 62% 90%,
+    transparent 90%
+  );
+  color: var(--ink);
+}
+
+.role {
+  margin: 1.75rem 0 0.75rem;
+  font: 500 1.35rem "Bricolage Grotesque", sans-serif;
+}
+
+.lead {
+  max-width: 60ch;
+  color: var(--muted);
+}
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn.primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+h2 {
+  margin-bottom: 1.75rem;
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+}
+
+.layers {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.layers button {
+  padding: 1.1rem 0.5rem;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink);
+  font: 800 clamp(1.8rem, 6vw, 3.2rem) "Bricolage Grotesque", sans-serif;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.layers button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.panel {
+  min-height: 7.5rem;
+  margin-top: 1rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.panel h3 {
+  margin-bottom: 0.4rem;
+  font-size: 1.4rem;
+}
+
+.panel p {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--muted);
+}
+
+.skillrow {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 0.5rem 1rem;
+  margin-top: 1.75rem;
+  color: var(--muted);
+}
+
+.skillrow b {
+  color: var(--ink);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0;
+}
+
+.chips li {
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  background: var(--surface);
+  font-size: 0.95rem;
+  list-style: none;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.card {
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.card.big {
+  grid-column: 1 / -1;
+  border-left: 8px solid var(--accent);
+}
+
+.card h3 {
+  margin-bottom: 0.35rem;
+  font-size: 1.5rem;
+}
+
+.card.big h3 {
+  font-size: 2.1rem;
+}
+
+.stack {
+  margin: 0 0 0.75rem;
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+
+.card li {
+  margin: 0.3rem 0;
+}
+
+.github-link {
+  margin: 0.9rem 0 0;
+}
+
+.table {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 560px;
+  border: 1px solid var(--line);
+  border-collapse: collapse;
+  background: var(--surface);
+}
+
+th,
+td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+th {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.two h2 {
+  margin-bottom: 1rem;
+}
+
+.certs {
+  margin: 0;
+  padding: 0;
+}
+
+.certs li {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--line);
+  list-style: none;
+}
+
+.languages {
+  margin-top: 1rem;
+}
+
+.contact a.big {
+  border-bottom: 4px solid var(--mark);
+  font: 800 clamp(1.4rem, 5vw, 3rem) "Bricolage Grotesque", sans-serif;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+  font-weight: 600;
+}
+
+.location {
+  margin-top: 1.5rem;
+}
+
+footer {
+  padding: 2rem 0 3rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+@media (max-width: 720px) {
+  .projects,
+  .two {
+    grid-template-columns: 1fr;
+  }
+
+  .skillrow {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .hero h1 span {
+    background: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+}
